@@ -1,4 +1,5 @@
-// npm install gulp gulp-autoprefixer gulp-clean-css gulp-rename gulp-sass --save-dev
+// brew install graphviz
+// npm install gulp gulp-autoprefixer gulp-clean-css gulp-rename gulp-sass gulp-uglify gulp-babel gulp-angular-architecture-graph --save-dev
 
 //required
 const gulp = require('gulp'),
@@ -61,4 +62,4 @@ gulp.task('watch:scripts', () => {
 });
 
 //default task
-gulp.task('default', ['scripts', 'styles']);
+gulp.task('default', ['watch:scripts', 'watch:styles']);
