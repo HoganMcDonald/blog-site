@@ -1,6 +1,7 @@
 //colors//
 $color-1: #fa709a
 $color-2: #fee140
+$color-3: #ffffff
 
 
 $gradient-color-1: $color-1
@@ -11,12 +12,34 @@ $gradient-color-2: $color-2
   @if is-direction($direction) == false
     $color-stops: $direction, $color-stops
     $direction: 180deg
-  
+
   background: nth(nth($color-stops, 1), 1)
   background: -webkit-linear-gradient(legacy-direction($direction), $color-stops)
   background: linear-gradient($direction, $color-stops)
 
+$app-gradient: linear-gradient(45deg, $gradient-color-1, $gradient-color-2)
+
+$primary-btn-text: $color-3
 
 
 
-  //fonts
+
+//fonts
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300i|Open+Sans')
+
+// font-family: 'Montserrat', sans-serif
+// font-family: 'Open Sans', sans-serif
+
+=header-font($size)
+  font:
+    family: 'Montserrat', sans-serif
+    size: $size
+    weight: 300
+
+=body-font($size)
+  font:
+    family: 'Open Sans', sans-serif
+    size: $size
+    weight: 400
+  line-height: 150%

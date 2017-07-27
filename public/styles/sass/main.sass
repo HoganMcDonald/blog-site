@@ -1,5 +1,23 @@
 @import variables
 
 h1
-  background: linear-gradient(45deg, $gradient-color-1, $gradient-color-2)
-  font-size: 45pt
+  background: $app-gradient
+  +header-font(45pt)
+
+p
+  +body-font(14pt)
+  margin: auto
+  max-width: 1200px
+  margin-top: 40px
+
+.btn
+  +header-font(18pt)
+  background: $app-gradient
+  color: $primary-btn-text
+  padding: 5px
+  padding-left: 10px
+  padding-right: 10px
+  border: 0
+  transition-duration: 300ms
+  &:hover
+    color: black
