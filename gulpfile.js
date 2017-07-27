@@ -1,5 +1,5 @@
 // brew install graphviz
-// npm install gulp gulp-autoprefixer gulp-clean-css gulp-rename gulp-sass gulp-uglify gulp-babel gulp-angular-architecture-graph --save-dev
+// npm install gulp gulp-autoprefixer gulp-clean-css gulp-rename gulp-sass gulp-uglify gulp-babel gulp-angular-architecture-graph babel-preset-es2015 gulp-concat --save-dev
 
 //required
 const gulp = require('gulp'),
@@ -9,21 +9,22 @@ const gulp = require('gulp'),
   sass = require('gulp-sass'),
   autoprefixer = require('gulp-autoprefixer'),
   cleanCSS = require('gulp-clean-css'),
+  concat = require('gulp-concat'),
   ngGraph = require('gulp-angular-architecture-graph');
 //end required
 
 //tasks
 gulp.task('scripts', () => {
   console.log('scripts ran');
-  gulp.src('public/scripts/dev/**/*.js')
-    .pipe(rename({
-      suffix: '.min'
-    }))
+  gulp.src(['public/assets/vendors/*.js', 'public/scripts/classes/*.js',
+    'public/scripts/app.js', 'public/scripts/controllers/*.js',
+    'public/scripts/services/*.js', 'public/scripts/client.js'])
     .pipe(babel({
       presets: ['es2015']
     }))
+    .pipe(concat('all.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('public/scripts/product'));
+    .pipe(gulp.dest('public/dev'));
 });
 
 gulp.task('styles', () => {
@@ -58,7 +59,7 @@ gulp.task('watch:styles', () => {
 });
 
 gulp.task('watch:scripts', () => {
-  gulp.watch('public/scripts/dev/*', ['scripts']);
+  gulp.watch('public/scripts/*.js', ['scripts']);
 });
 
 //default task
