@@ -1,0 +1,22 @@
+//colors//
+$color-1: #fa709a
+$color-2: #fee140
+
+
+$gradient-color-1: $color-1
+$gradient-color-2: $color-2
+
+//site gradient
+=linear-gradient($direction, $color-stops...)
+  @if is-direction($direction) == false
+    $color-stops: $direction, $color-stops
+    $direction: 180deg
+  
+  background: nth(nth($color-stops, 1), 1)
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops)
+  background: linear-gradient($direction, $color-stops)
+
+
+
+
+  //fonts
